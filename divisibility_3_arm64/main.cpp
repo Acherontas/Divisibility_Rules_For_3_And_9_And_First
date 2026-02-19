@@ -1,0 +1,94 @@
+#include <iostream>
+#include <iomanip>
+#include <math.h>
+#include "sum_cdi.h"
+using namespace std;
+
+
+long double x;
+
+int praxis(long double nmb,int xx){
+    cout<<"using ------ " << xx << " and nmb " << nmb <<"\n";
+    long double test;
+    test=(long double)nmb/(long double)xx;
+    long double rest;
+    rest=(long double)x/(long double)xx;
+    cout<<"returning " << rest <<"\n";
+    long double fractpart,intpart;
+    fractpart=modf(rest,&intpart);
+    cout<<"with " << rest << " as " << intpart << "  and " << fractpart <<"\n";
+    if (fractpart==0.0){cout<<"divisible by " << xx << " @ 0.0 :: yes \n";}
+    if (fractpart==0){cout<<"divisible by " <<xx << " @ 0 :: yes \n";}
+    cout<<"end of using ------ " << xx << "\n";
+    return 0;
+}
+
+int praxis_two(long double nmb,int xx){
+    cout<<"using -------- " << xx <<" and nmb " << nmb <<"\n";
+    long double fractpart,intpart;
+    long double rst;
+    rst=(long double)nmb/(long double)xx;
+    fractpart=modf(rst,&intpart);
+    cout<<"with " << rst << " as " << intpart << "  and " << fractpart <<"\n";
+    if (fractpart==0.0){cout<<"divisible by " << xx << " @ 0.0 :: yes \n";}
+    if (fractpart==0){cout<<"divisible by " <<xx << " @ 0 :: yes \n";}
+    return 0;
+}
+
+int main(int argc,char** argv)
+{
+    x=stold(argv[1]);
+    int preci;
+    preci=stoi(argv[2]);
+    cout<<"ur x is " <<std::setprecision(preci) << x <<"\n";
+    sum_cdi *smcd=new sum_cdi();
+    int summy;
+    summy=smcd->cdis(x,1);
+    cout<<"\n";
+    long double first_rel;
+    first_rel=smcd->isdc[0];
+    cout<<"with first of " << first_rel <<" and ";
+    cout<<"with sum of summy ::== " << summy <<"\n";
+    cout<<smcd->isdcx <<"\n";
+    long double xld;
+    xld=x-first_rel;
+    for(int i=0;i<=smcd->isdcx-1;i++){cout<<smcd->isdc[i] << " " ;praxis(smcd->isdc[i],3);}
+    cout<<"\n";
+    for(int i=0;i<=smcd->isdcx-1;i++){cout<<smcd->isdc[i] << " " ;praxis(smcd->isdc[i],9);}
+    cout<<"\n";
+    cout<<"-----GEnerATE FOR 3------\n";
+    cout<<"for " << xld <<"\n";
+    praxis_two(xld,3);
+    cout<<"\n";
+    cout<<"-----GEnerATE FOR 9------\n";
+    praxis_two(xld,9);
+
+
+    /*
+    long double test;
+    test=(long double)summy/(long double)3;
+    cout<<"with test " << test <<"\n";
+    long double rest;
+    rest=(long double)x/(long double)3;
+    cout<<"returning " << rest <<"\n";
+    long double fractpart,intpart;
+    fractpart=modf(rest,&intpart);
+    cout<<"with" << rest << " as " << intpart << "  and " << fractpart <<"\n";
+    if (fractpart==0.0){cout<<"divisible by 3 @ 0.0 :: yes \n";}
+    if (fractpart==0){cout<<"divisible by 3 @ 0 :: yes \n";}
+    cout<<"---------------------------End For 3----------------------------\n";
+    cout<<"\n";
+    cout<<"---------------------------For 9----------------------------\n";
+    test=(long double)summy/(long double)9;
+    cout<<"with test " << test <<"\n";
+    rest=(long double)x/(long double)9;
+    cout<<"returning " << rest <<"\n";
+    fractpart=modf(rest,&intpart);
+    cout<<"with" << rest << " as " << intpart << "  and " << fractpart <<"\n";
+    if (fractpart==0.0){cout<<"divisible by 9 @ 0.0 :: yes \n";}
+    if (fractpart==0){cout<<"divisible by 9 @ 0 :: yes \n";}
+    cout<<"---------------------------End For 9----------------------------\n";
+    */
+
+    return 0;
+}
