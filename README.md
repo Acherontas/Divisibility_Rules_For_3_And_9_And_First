@@ -1,4 +1,8 @@
 # Divisibility_Rules_For_3_And_9_And_First
+
+
+do a compile again cause of changes in the code
+
 Contains the divisibility of minus what is left eg 2785=22 2785-22=2763
 
 2785=2+7+8+5 =22
