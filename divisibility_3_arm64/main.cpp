@@ -8,14 +8,14 @@ using namespace std;
 long double x;
 
 int praxis(long double nmb,int xx){
-    cout<<"using ------ " << xx << " and nmb " << nmb <<"\n";
+    cout<<"using ------ " << nmb << " and xx " << xx <<"\n";
     long double test;
     test=(long double)nmb/(long double)xx;
-    long double rest;
-    rest=(long double)x/(long double)xx;
+    //long double rest;
+    //rest=(long double)x/(long double)xx;
     cout<<"returning " << rest <<"\n";
     long double fractpart,intpart;
-    fractpart=modf(rest,&intpart);
+    fractpart=modf(test,&intpart);
     cout<<"with " << rest << " as " << intpart << "  and " << fractpart <<"\n";
     if (fractpart==0.0){cout<<"divisible by " << xx << " @ 0.0 :: yes \n";}
     if (fractpart==0){cout<<"divisible by " <<xx << " @ 0 :: yes \n";}
